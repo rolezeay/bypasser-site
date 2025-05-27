@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" >
+<script>
+const text = "Zynlope's bypasser :)";
+let index = 0;
+let forward = true;
+
+function animateTitle() {
+  if (forward) {
+    index++;
+    if (index > text.length) {
+      forward = false;
+      index = text.length;
+    }
+  } else {
+    index--;
+    if (index < 0) {
+      forward = true;
+      index = 0;
+    }
+  }
+
+  document.title = text.substring(0, index);
+  setTimeout(animateTitle, 150);
+}
+
+animateTitle();
+</script>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Zynlope's Bypasser</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      color: #ff99ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 20px;
+      background: #2a003d; /* fallback color */
+      overflow: hidden;
+    }
+
+    #bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      /* no filter to keep video original colors */
+    }
+
+    .container {
+      background: rgba(30, 0, 50, 0.75);
+      border-radius: 15px;
+      box-shadow: 0 0 30px #ff9900aa;
+      padding: 30px 40px;
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      letter-spacing: 0.1em;
+      text-align: center;
+      margin: 0 0 10px 0;
+      color: #fff;  /* changed to white */
+      text-shadow: 0 0 8px #ff77cc, 0 0 15px #ff5500;
+      user-select: none;
+    }
+
+    textarea {
+      background: #330022;
+      border: 2px solid #ff8800;
+      border-radius: 12px;
+      padding: 15px 20px;
+      font-size: 1.1rem;
+      color: #ffbbcc;
+      resize: vertical;
+      min-height: 130px;
+      box-shadow: inset 0 0 10px #ff770088;
+      transition: border-color 0.3s ease;
+      outline: none;
+      font-family: 'Orbitron', monospace, sans-serif;
+    }
+    textarea::placeholder {
+      color: #ffbbcc80;
+      font-style: italic;
+    }
+    textarea:focus {
+      border-color: #ffaa55;
+      box-shadow: inset 0 0 15px #ffaa5588;
+    }
+
+    .output {
+      background: #330022;
+      border: 2px solid #ff8800;
+      border-radius: 12px;
+      min-height: 130px;
+      padding: 20px;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #ffbbcc;
+      white-space: pre-wrap;
+      user-select: all;
+      box-shadow: inset 0 0 10px #ff770088;
+      font-family: 'Orbitron', monospace, sans-serif;
+    }
+
+    button {
+      background: #ff8800;
+      border: none;
+      color: #000;
+      font-weight: 700;
+      font-size: 1.2rem;
+      padding: 15px;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow:
+        0 0 5px #ff8800,
+        0 0 15px #ff8800,
+        0 0 30px #ff8800;
+      user-select: none;
+      transition: all 0.25s ease;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 0.05em;
+    }
+    button:hover {
+      background: #cc6600;
+      box-shadow:
+        0 0 10px #cc6600,
+        0 0 20px #cc6600,
+        0 0 40px #cc6600;
+      color: #fff;
+    }
+    button:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+
+  <video autoplay muted loop id="bgVideo" playsinline>
+    <source src="background.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="container">
+    <h1>Zynlope's Bypasser</h1>
+    <textarea id="inputText" placeholder="Type your message here..."></textarea>
+    <div class="output" id="outputText" aria-label="Converted text output"></div>
+    <button id="copyBtn" aria-label="Copy converted text to clipboard">Copy Converted Text</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
